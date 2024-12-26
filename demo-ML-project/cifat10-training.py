@@ -28,7 +28,7 @@ class CIFAR10Net(nn.Module):
         x = self.fc2(x)
         return x
 
-def train_cifar10(epochs=10, batch_size=128, learning_rate=0.001, save_dir='./model_output'):
+def train_cifar10(epochs=10, batch_size=128, learning_rate=0.001, save_dir='./demo-ML-project/model_output'):
     # 創建保存目錄
     os.makedirs(save_dir, exist_ok=True)
     
@@ -45,7 +45,7 @@ def train_cifar10(epochs=10, batch_size=128, learning_rate=0.001, save_dir='./mo
     ])
 
     # 加載數據集
-    trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
+    trainset = torchvision.datasets.CIFAR10(root='./demo-ML-project/data', train=True,
                                           download=True, transform=transform)
     trainloader = DataLoader(trainset, batch_size=batch_size,
                            shuffle=True, num_workers=2)
