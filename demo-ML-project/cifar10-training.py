@@ -28,7 +28,7 @@ class CIFAR10Net(nn.Module):
         x = self.fc2(x)
         return x
 
-def train_cifar10(epochs=10, batch_size=128, learning_rate=0.001, save_dir='./demo-ML-project/model_output'):
+def train_cifar10(epochs=100, batch_size=128, learning_rate=0.001, save_dir='./demo-ML-project/model_output'):
     # 創建保存目錄
     os.makedirs(save_dir, exist_ok=True)
     
