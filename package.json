@@ -1,0 +1,20 @@
+{
+  "name": "model-upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/upload.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.10.6",
+    "arweave": "^1.14.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
