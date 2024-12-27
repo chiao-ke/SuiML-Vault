@@ -1,5 +1,5 @@
 import Arweave from 'arweave';
-import { randomBytes, createCipheriv } from 'crypto';
+import { randomBytes, createCipheriv, createHash } from 'crypto';
 import * as fs from 'fs';
 import dns from 'dns';
 
@@ -12,12 +12,21 @@ const MAINNET_CONFIG = {
     host: 'arweave.net',  // Arweave 主網
     port: 443,
     protocol: 'https',
-    timeout: 30000,  // Increase timeout to 30 seconds
+    timeout: 60000,  // Increase timeout to 60 seconds
     logging: true    // Enable logging for debugging
 };
 
 // 初始化 Arweave (使用主網)
 const arweave = Arweave.init(MAINNET_CONFIG);
+
+/**
+ * 計算數據的SHA-256哈希值
+ * @param data 要計算哈希的數據
+ * @returns 哈希值（十六進制字符串）
+ */
+function calculateHash(data: Buffer): string {
+    return createHash('sha256').update(data).digest('hex');
+}
 
 /**
  * 加密模型文件
@@ -87,8 +96,17 @@ async function uploadModel() {
         // 讀取模型文件
         const modelData = fs.readFileSync('./demo-ML-project/model_output/cifar10_model.pth');
         
+        // 計算原始文件的哈希值
+        const originalHash = calculateHash(modelData);
+        console.log('原始文件哈希值:', originalHash);
+        
         console.log('開始加密模型...');
         const { encryptedData, key } = await encryptData(modelData);
+        
+        // 計算加密後文件的哈希值
+        const encryptedHash = calculateHash(encryptedData);
+        console.log('加密後文件哈希值:', encryptedHash);
+        
         console.log('模型加密完成');
 
         console.log('創建Arweave交易...');
@@ -124,6 +142,8 @@ async function uploadModel() {
             network: MAINNET_CONFIG.host,
             transactionId: transaction.id,
             encryptionKey: key,
+            originalHash,
+            encryptedHash,
             walletAddress: address,
             timestamp: new Date().toISOString()
         };
