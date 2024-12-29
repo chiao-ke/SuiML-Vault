@@ -114,12 +114,12 @@ sui client call --package 0xecc39d1e6c9b376a809d9f9035049a9d3410ded1301799d67887
          "e1938460c11217dca63248647d9fc34d5987e293c9e2d6b4277cc6d2fced91fb" \
          "original_hash_here" \
          "encrypted_hash_here" \
-         "https://arweave.net/EsR5u_n9rzuIoCglYWmviFK2Gv7VgiSCYGkNXbiGPDw" \
-         "https://arweave.net/EsR5u_n9rzuIoCglYWmviFK2Gv7VgiSCYGkNXbiGPDw" \
+         "https://github.com/chiao-ke/SuiML-Vault" \
+         "https://raw.githubusercontent.com/chiao-ke/SuiML-Vault/refs/heads/main/nft-asset/nft-image.png" \
          "[]" \
   --gas-budget 100000000
 ```
-
+Photographer：Rostislav Uzunov: https://www.pexels.com/zh-tw/photo/5011647/
 2. After minting, you'll receive:
    - An NFT object ID
    - An AdminCap object ID
