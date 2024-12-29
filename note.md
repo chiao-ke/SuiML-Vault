@@ -120,6 +120,7 @@ sui client call --package 0xecc39d1e6c9b376a809d9f9035049a9d3410ded1301799d67887
   --gas-budget 100000000
 ```
 Photographer：Rostislav Uzunov: https://www.pexels.com/zh-tw/photo/5011647/
+
 2. After minting, you'll receive:
    - An NFT object ID
    - An AdminCap object ID
